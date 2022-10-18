@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- font awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,40 +27,40 @@
 
 <body>
 
-<div class="vw-100 vh-100">
-  <header>
-    <div class="container h-100 d-flex justify-content-between align-content-center">
-      <div class="d-flex align-items-center">
-        <img class="h-75" src="img/Logo.png" alt="logo">
-      </div>
-      <div class="d-flex align-items-center">
-          <select id="level" class="form-select" name="level" >
+  <div class="vw-100 vh-100">
+    <header>
+      <div class="container h-100 d-flex justify-content-between align-content-center">
+        <div class="d-flex align-items-center">
+          <img class="h-75" src="img/Logo.png" alt="logo">
+        </div>
+        <div class="d-flex align-items-center">
+          <select id="level" class="form-select" name="level">
             <option value="easy">Easy</option>
             <option value="normal">Normal</option>
             <option value="hard">Hard</option>
           </select>
           <button id="btn-play" type="button" class="btn btn-light mx-3">Play</button>
+        </div>
       </div>
-    </div>
-  </header>
-  <main class="d-flex flex-column justify-content-center align-items-center">
-    <h2 class="text-white">Scegli una difficoltà e genera la griglia</h1>
-    <div id="container-grid" class=" d-flex justify-content-center align-items-center">
-      
-    </div>
-    <div class="container-result">
-      <h2>Hai vinto!</h2>
-      <h3>Punteggio:</h3>
-      <span>Hai trovato x lune</span>
+    </header>
+    <main id="container-main" class="d-flex flex-column justify-content-center align-items-center">
+      <h2 class="text-white">Scegli una difficoltà e genera la griglia</h1>
+        <div id="container-grid" class=" d-flex justify-content-center align-items-center">
 
-    </div>
+        </div>
+        <div class="container-result">
+          <h2>Hai vinto!</h2>
+          <h3>Punteggio:</h3>
+          <span>Hai trovato x lune</span>
 
-  </main>
-  <footer>
+        </div>
 
-  </footer>
+    </main>
+    <footer>
 
-</div>
+    </footer>
+
+  </div>
 
 
 

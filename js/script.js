@@ -37,7 +37,7 @@ function play() {
     const bombs = [];
     let score = 0;
 
-
+ 
 
     switch (level) {
         case 'easy':
@@ -69,29 +69,9 @@ function play() {
         box.className = "box";
         box.style.width = `calc(100% / ${Math.sqrt(numBox)})`;
         box.style.height = `calc(100% / ${Math.sqrt(numBox)})`;
-
-        function handleClick() {
-
-            this.removeEventListener('click', handleClick);
-            if (bombs.includes(num)) {
-                box.classList.add('red')
-                box.innerHTML = `
-                <i class="fa-solid fa-bomb h-80 v-80"></i>
-                `
-                gameOver();
-            }
-            else {
-                score++;
-                box.classList.add('cyan')
-                box.innerHTML = `
-                <i class="fa-solid fa-moon h-80 v-80"></i>
-                `
-                //devo controllare se l'utente ha raggiunto il punteggio massimo
-                if (score == MAX_ATTEMP) {
-                    gameOver();
-                }
-            }
-        }
+        box.innerHTML = `
+            <span>${num}</span> 
+        `
 
         box.addEventListener('click', handleClick)
 
@@ -112,6 +92,37 @@ function play() {
     }
 
     generateGrid();
+
+    function createResult(){
+        const containerMainHTML = document.getElementById('container-main');
+        const result = document.createElement('div');
+        result.classList.add(container-result);
+        containerMainHTML.append(result);
+
+    }
+
+    function handleClick(num) {
+        
+        this.removeEventListener('click', handleClick);
+        if (bombs.includes(num)) {
+            box.classList.add('red')
+            box.innerHTML = `
+            <i class="fa-solid fa-bomb h-80 v-80"></i>
+            `
+            gameOver();
+        }
+        else {
+            score++;
+            box.classList.add('cyan')
+            box.innerHTML = `
+            <i class="fa-solid fa-moon h-80 v-80"></i>
+            `
+            //devo controllare se l'utente ha raggiunto il punteggio massimo
+            if (score == MAX_ATTEMP) {
+                gameOver();
+            }
+        }
+    }
 
     function gameOver() {
         const squares = document.querySelectorAll('.box');
