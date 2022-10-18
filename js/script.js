@@ -28,10 +28,9 @@ const buttonHTML = document.getElementById('btn-play');
 
 function play() {
     console.log('Start the game!')
-    let numBox;
     const containerGrid = document.getElementById('container-grid')
     containerGrid.innerHTML = '';
-    const containerMainHTML = document.getElementById('container-esito'); 
+    const containerMainHTML = document.getElementById('container-esito');
     containerMainHTML.innerHTML = '';
     const levelHTML = document.getElementById('level');
     const level = levelHTML.value;
@@ -40,24 +39,15 @@ function play() {
     let esito = '';
     let score = 0;
 
+    //operatore ternario per definire il numero di box in base al livello
+    const numBox = (level == 'easy') ? 100 : (level == 'normal') ? 81 : 49;
 
-
-    switch (level) {
-        case 'easy':
-        default:
-            numBox = 100;
-            break;
-        case 'normal':
-            numBox = 81;
-            break;
-        case 'hard':
-            numBox = 49
-
-    }
 
     //creo una costante con il numero massimo di tentativi
     const MAX_ATTEMP = numBox - numBomb;
 
+
+    //funzione che genera la bombe posizione che avranno le bombe e le pusha in un array
     while (bombs.length < numBomb) {
         const bomb = randomNumber(1, numBox);
         if (!bombs.includes(bomb)) {
@@ -95,27 +85,13 @@ function play() {
 
     generateGrid();
 
-    function createResult() {
-        
-        const result = document.createElement('div');
-        result.classList.add('container-result');
-        result.innerHTML = `
-        <h1>Game Over!</h1>
-        <br>
-        <h2>${esito}</h2>
-        <br>
-        <h3>Punteggio:</h3>
-        <span>Hai trovato ${score} lune</span>
-        `
-        containerMainHTML.append(result);
 
-    }
-
+    //funzione che gestisce il click sul box
     function handleClick() {
 
         this.removeEventListener('click', handleClick);
         const positionBox = this.querySelector('span').innerText;
-        
+
 
         if (bombs.includes(parseInt(positionBox))) {
             this.classList.add('red')
@@ -137,18 +113,37 @@ function play() {
                 gameOver();
             }
         }
+
+    }
+    //funzione che genera il contenitore del risultato
+    function createResult() {
+
+        const result = document.createElement('div');
+        result.classList.add('container-result');
+        result.innerHTML = `
+        <h1>Game Over</h1>
+        <br>
+        <h2>${esito}</h2>
+        <br>
+        <h3>Punteggio:</h3>
+        <span>Hai trovato ${score} lune</span>
+        `
+        containerMainHTML.append(result);
+
     }
 
+
+    //funzione che gestisce la fine del gioco
     function gameOver() {
         const squares = document.querySelectorAll('.box');
-        // console.log(squares);
         for (let i = 0; i < squares.length; i++) {
             squares[i].removeEventListener('click', handleClick);
-            if(bombs.includes(i)){
-                squares[i].classList.add('red');
-                squares[i].innerHTML = `
+            if (bombs.includes(i)) {
+                squares[i - 1].classList.add('red');
+                squares[i - 1].innerHTML = `
                 <i class="fa-solid fa-bomb h-80 v-80"></i>
                 `
+                console.log(i - 1);
             }
         }
 
@@ -162,4 +157,3 @@ function play() {
 buttonHTML.addEventListener('click', play)
 
 
- 
