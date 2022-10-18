@@ -37,7 +37,7 @@ function play() {
     const bombs = [];
     let score = 0;
 
- 
+
 
     switch (level) {
         case 'easy':
@@ -72,7 +72,6 @@ function play() {
         box.innerHTML = `
             <span>${num}</span> 
         `
-
         box.addEventListener('click', handleClick)
 
         return box;
@@ -93,28 +92,31 @@ function play() {
 
     generateGrid();
 
-    function createResult(){
+    function createResult() {
         const containerMainHTML = document.getElementById('container-main');
         const result = document.createElement('div');
-        result.classList.add(container-result);
+        result.classList.add('container-result');
         containerMainHTML.append(result);
 
     }
 
-    function handleClick(num) {
-        
+    function handleClick() {
+
         this.removeEventListener('click', handleClick);
-        if (bombs.includes(num)) {
-            box.classList.add('red')
-            box.innerHTML = `
+        const positionBox = this.querySelector('span').innerText;
+        console.log(positionBox)
+
+        if (bombs.includes(parseInt(positionBox))) {
+            this.classList.add('red')
+            this.innerHTML = `
             <i class="fa-solid fa-bomb h-80 v-80"></i>
             `
             gameOver();
         }
         else {
             score++;
-            box.classList.add('cyan')
-            box.innerHTML = `
+            this.classList.add('cyan')
+            this.innerHTML = `
             <i class="fa-solid fa-moon h-80 v-80"></i>
             `
             //devo controllare se l'utente ha raggiunto il punteggio massimo
@@ -129,7 +131,15 @@ function play() {
         console.log(squares);
         for (let i = 0; i < squares.length; i++) {
             squares[i].removeEventListener('click', handleClick);
+            if(bombs.includes(i)){
+                squares[i].classList.add('red');
+                squares[i].innerHTML = `
+                <i class="fa-solid fa-bomb h-80 v-80"></i>
+                `
+            }
         }
+
+
     }
 
 }
