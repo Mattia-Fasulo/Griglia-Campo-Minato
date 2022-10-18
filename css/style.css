@@ -1,0 +1,66 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* scaffold */
+body {
+    font-family: 'Source Code Pro', monospace;
+}
+
+header, footer {
+    height: 70px;
+    background-color: rgb(36, 36, 36);
+    
+}
+
+main {
+    width: 100%;
+    height: calc(100vh - 140px);
+    background-color: #54717c;
+    overflow: auto;
+}
+
+/* grid and box  */
+.grid {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black; 
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.50) 1px 3px 6px , rgba(0, 0, 0, 0.50) 1px 3px 6px;
+}
+
+.cyan {
+    color: white;
+    background-color: darkcyan;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.red {
+    background-color: red;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.container-result {
+    padding: 5px;
+    top: 150px;
+    right: 100px;
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    color: white;
+}
