@@ -31,10 +31,13 @@ function play() {
     let numBox;
     const containerGrid = document.getElementById('container-grid')
     containerGrid.innerHTML = '';
+    const containerMainHTML = document.getElementById('container-esito'); 
+    containerMainHTML.innerHTML = '';
     const levelHTML = document.getElementById('level');
     const level = levelHTML.value;
     const numBomb = 16;
     const bombs = [];
+    let esito = '';
     let score = 0;
 
 
@@ -93,9 +96,17 @@ function play() {
     generateGrid();
 
     function createResult() {
-        const containerMainHTML = document.getElementById('container-main');
+        
         const result = document.createElement('div');
         result.classList.add('container-result');
+        result.innerHTML = `
+        <h1>Game Over!</h1>
+        <br>
+        <h2>${esito}</h2>
+        <br>
+        <h3>Punteggio:</h3>
+        <span>Hai trovato ${score} lune</span>
+        `
         containerMainHTML.append(result);
 
     }
@@ -104,13 +115,14 @@ function play() {
 
         this.removeEventListener('click', handleClick);
         const positionBox = this.querySelector('span').innerText;
-        console.log(positionBox)
+        
 
         if (bombs.includes(parseInt(positionBox))) {
             this.classList.add('red')
             this.innerHTML = `
             <i class="fa-solid fa-bomb h-80 v-80"></i>
             `
+            esito = 'Hai perso!'
             gameOver();
         }
         else {
@@ -121,6 +133,7 @@ function play() {
             `
             //devo controllare se l'utente ha raggiunto il punteggio massimo
             if (score == MAX_ATTEMP) {
+                esito = 'Hai vinto!'
                 gameOver();
             }
         }
@@ -128,7 +141,7 @@ function play() {
 
     function gameOver() {
         const squares = document.querySelectorAll('.box');
-        console.log(squares);
+        // console.log(squares);
         for (let i = 0; i < squares.length; i++) {
             squares[i].removeEventListener('click', handleClick);
             if(bombs.includes(i)){
@@ -139,9 +152,14 @@ function play() {
             }
         }
 
+        createResult();
+
 
     }
 
 }
 
 buttonHTML.addEventListener('click', play)
+
+
+ 
