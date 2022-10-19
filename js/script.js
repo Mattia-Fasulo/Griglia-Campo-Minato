@@ -138,12 +138,13 @@ function play() {
         const squares = document.querySelectorAll('.box');
         for (let i = 0; i < squares.length; i++) {
             squares[i].removeEventListener('click', handleClick);
-            if (bombs.includes(i)) {
-                squares[i - 1].classList.add('red');
-                squares[i - 1].innerHTML = `
+            let contatore = i + 1;
+            if (bombs.includes(contatore)) {
+                squares[i].classList.add('red');
+                squares[i].innerHTML = `
                 <i class="fa-solid fa-bomb h-80 v-80"></i>
                 `
-                console.log(i - 1);
+                // console.log(i - 1);
             }
         }
 
